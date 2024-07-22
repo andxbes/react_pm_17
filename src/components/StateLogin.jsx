@@ -8,7 +8,12 @@ export default function Login() {
   function handleSubmit(e){
     e.preventDefault();
     console.info('submitted', enteredValues?.email, enteredValues?.password);
-    return ;
+
+    //reset
+    // setEnteredValues({
+    //   email:'',
+    //   password: ''
+    // });
   }
 
   function handleInputChange(identifier, value){

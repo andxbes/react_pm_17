@@ -11,7 +11,11 @@ export default function Login() {
     const enteredPassword = password.current.value;
 
     console.info('submitted', enteredEmail, enteredPassword);
-    return ;
+    
+    //reset
+    // email.current.value = '';
+    // password.current.value = '';
+
   }
   return (
     <form onSubmit={handleSubmit}>
