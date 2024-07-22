@@ -1,21 +1,17 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 export default function Login() {
-  const [enteredValues, setEnteredValues] = useState({
-    email:'',
-    password: ''
-  });
+  const email = useRef('');
+  const password = useRef('');
+
   function handleSubmit(e){
     e.preventDefault();
-    console.info('submitted', enteredValues?.email, enteredValues?.password);
-    return ;
-  }
 
-  function handleInputChange(identifier, value){
-    setEnteredValues((prevData)=>({ 
-        ...prevData,
-         [identifier] : value
-        }));
+    const enteredEmail = email.current.value;
+    const enteredPassword = password.current.value;
+
+    console.info('submitted', enteredEmail, enteredPassword);
+    return ;
   }
   return (
     <form onSubmit={handleSubmit}>
@@ -24,14 +20,12 @@ export default function Login() {
       <div className="control-row">
         <div className="control no-margin">
           <label htmlFor="email">Email</label>
-          <input id="email" type="email" name="email" value={enteredValues?.email??''}  onChange={(event)=>handleInputChange('email', event.target.value)} />
+          <input id="email" type="email"  autoComplete="" name="email" ref={email} />
         </div>
 
         <div className="control no-margin">
           <label htmlFor="password">Password</label>
-          <input id="password" type="password" name="password" value={enteredValues?.password??''} 
-           onChange={(event)=>handleInputChange('password', event.target.value)}
-          />
+          <input id="password" type="password" autoComplete="" name="password" ref={password}/>
         </div>
       </div>
 
